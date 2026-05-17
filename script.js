@@ -1,20 +1,31 @@
+let cnv;
+
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  cnv = createCanvas(windowWidth, windowHeight);
+
+  // FORCE CANVAS ON TOP (bulletproof)
+  cnv.style('position', 'fixed');
+  cnv.style('top', '0');
+  cnv.style('left', '0');
+  cnv.style('z-index', '9999');
+  cnv.style('pointer-events', 'none');
+
   noStroke();
 }
 
 function draw() {
-  clear(); // IMPORTANT: lets video show through
+  clear();
 
   let x = mouseX;
   let t = x / width;
 
-  let c1 = color(30, 40, 80, 100);
-  let c2 = color(255, 180, 100, 100);
-
-  let col = lerpColor(c1, c2, t);
+  let col = lerpColor(
+    color(30, 40, 80, 120),
+    color(255, 180, 100, 120),
+    t
+  );
 
   fill(col);
 
-  ellipse(x, mouseY, 160);
+  ellipse(x, mouseY, 180);
 }
