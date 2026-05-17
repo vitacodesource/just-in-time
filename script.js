@@ -6,13 +6,13 @@ function setup() {
 function draw() {
   clear();
 
-  let t = mouseX / width;
-
-  let r = lerp(0, 255, t);
-  let g = lerp(0, 180, t);
-  let b = lerp(255, 80, t);
+  let r = map(mouseX, 0, width, 0, 255);
+  let g = map(mouseX, 0, width, 50, 200);
+  let b = map(mouseX, 0, width, 255, 0);
 
   fill(r, g, b, 180);
 
-  ellipse(mouseX, mouseY, 180);
+  let size = map(mouseY, 0, height, 80, 260);
+
+  ellipse(mouseX, mouseY, size);
 }
