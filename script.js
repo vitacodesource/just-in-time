@@ -1,19 +1,25 @@
 function setup() {
-  let c = createCanvas(windowWidth, windowHeight);
-  c.position(0, 0);
-  c.style('position', 'fixed');
-  c.style('top', '0');
-  c.style('left', '0');
-  c.style('z-index', '10');
-  c.style('pointer-events', 'none');
-
-  background(0, 0, 0, 0);
+  createCanvas(windowWidth, windowHeight);
+  noStroke();
 }
 
 function draw() {
-  background(255, 0, 0, 80);
+  clear();
 
-  fill(0);
-  noStroke();
-  ellipse(mouseX, mouseY, 80);
+  // stable interaction (no weird drift, no confusion)
+  let x = mouseX;
+  let y = mouseY;
+
+  // controlled color shift (simple + visible)
+  let t = x / width;
+
+  let c1 = color(30, 40, 80, 120);   // night blue
+  let c2 = color(255, 180, 100, 120); // sunrise orange
+
+  let col = lerpColor(c1, c2, t);
+
+  fill(col);
+
+  // visible, intentional shape
+  ellipse(x, y, 160);
 }
