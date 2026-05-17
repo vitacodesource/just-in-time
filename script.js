@@ -1,1 +1,16 @@
-function setup() { createCanvas(windowWidth, windowHeight); noStroke(); } function draw() { background(0, 0); let r = map(mouseX, 0, width, 0, 255); let g = map(mouseX, 0, width, 50, 180); let b = map(mouseX, 0, width, 255, 80); fill(r, g, b, 10); rect(0, 0, width, height); }
+function setup() {
+  createCanvas(windowWidth, windowHeight);
+  noStroke();
+}
+
+function draw() {
+  background(0, 0);
+
+  let r = map(mouseX, 0, width, 0, 255);
+  let g = map(mouseX, 0, width, 50, 180);
+  let b = map(mouseX, 0, width, 255, 80);
+
+  fill(r, g, b, 10);
+
+  rect(0, 0, width, height);
+}
