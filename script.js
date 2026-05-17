@@ -15,10 +15,19 @@ function draw() {
 
   let t = map(mouseX, 0, width, 0, 1);
 
-  let warm = lerpColor(color(255, 80, 0, 80), color(255, 220, 180, 80), t);
+  // slow ambient shift (independent of mouse)
+  let timeShift = sin(frameCount * 0.005) * 0.5 + 0.5;
+
+  let finalT = (t + timeShift) / 2;
+
+  let warm = lerpColor(
+    color(20, 30, 60, 80),
+    color(255, 200, 120, 80),
+    finalT
+  );
 
   noStroke();
   fill(warm);
 
-  ellipse(mouseX, mouseY, 120);
+  ellipse(mouseX, mouseY, 150);
 }
