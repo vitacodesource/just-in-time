@@ -12,11 +12,3 @@ video {
   object-fit: cover;
   z-index: 0;
 }
-
-canvas {
-  position: fixed !important;
-  top: 0;
-  left: 0;
-  z-index: 9999 !important;
-  pointer-events: none;
-}
