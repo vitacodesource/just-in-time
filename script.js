@@ -4,15 +4,11 @@ function setup() {
 }
 
 function draw() {
-  clear();
-
   let r = map(mouseX, 0, width, 0, 255);
-  let g = map(mouseX, 0, width, 50, 200);
-  let b = map(mouseX, 0, width, 255, 0);
+  let g = map(mouseX, 0, width, 50, 180);
+  let b = map(mouseX, 0, width, 255, 80);
 
-  fill(r, g, b, 180);
+  fill(r, g, b, 60);
 
-  let size = map(mouseY, 0, height, 80, 260);
-
-  ellipse(mouseX, mouseY, size);
+  rect(0, 0, width, height);
 }
