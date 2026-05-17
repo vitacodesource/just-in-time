@@ -1,57 +1,76 @@
 let video;
-let mode = 0; // 0 = tint, 1 = invert + tint, 2 = posterize + tint
+let mode = 0;
+let videoReady = false;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
   
-  video = createVideo("JustInTime_FINAL_SMALL.mp4");
+  video = createVideo("JustInTime_FINAL_SMALL.mp4", videoLoaded);
   video.hide();
-  video.loop();
   video.volume(0);
+  
+  // Important: don't loop yet, we'll control it with click
+}
+
+function videoLoaded() {
+  videoReady = true;
+  console.log("Video loaded successfully");
 }
 
 function draw() {
   background(0);
 
-  // === MOUSE CONTROLLED VALUES ===
-  let r = map(mouseX, 0, width, 60, 255);
-  let g = map(mouseX, 0, width, 180, 60);
-  let b = map(mouseY, 0, height, 255, 100);
-  let brightness = map(mouseY, 0, height, 0.75, 1.45);
+  if (!videoReady || !video) {
+    // Show loading message
+    fill(255);
+    textAlign(CENTER, CENTER);
+    textSize(24);
+    text("Loading video...", width/2, height/2);
+    return;
+  }
+
+  // Mouse controlled color values
+  let r = map(mouseX, 0, width, 80, 255);
+  let g = map(mouseX, 0, width, 200, 60);
+  let b = map(mouseY, 0, height, 255, 120);
+  let bright = map(mouseY, 0, height, 0.8, 1.5);
 
   push();
 
   if (mode === 0) {
-    // Normal Tint
-    tint(r * brightness, g * brightness, b * brightness, 255);
-    
-  } else if (mode === 1) {
-    // Invert + Tint (very visible dramatic effect)
-    tint(r * brightness, g * brightness, b * brightness, 255);
+    tint(r * bright, g * bright, b * bright, 255);
+  } 
+  else if (mode === 1) {
+    tint(r * bright, g * bright, b * bright, 255);
     filter(INVERT);
-    
-  } else if (mode === 2) {
-    // Posterize + Tint (strong stylized look)
-    tint(r * brightness, g * brightness, b * brightness, 255);
-    filter(POSTERIZE, 6);   // lower number = stronger effect
+  } 
+  else if (mode === 2) {
+    tint(r * bright, g * bright, b * bright, 255);
+    filter(POSTERIZE, 5);
   }
 
   image(video, 0, 0, width, height);
   pop();
 
-  // Optional subtle overlay for extra mood
+  // Very light overlay for depth (only in normal mode)
   if (mode === 0) {
-    fill(0, 0, 30, 25);
+    fill(0, 0, 20, 30);
     rect(0, 0, width, height);
   }
 }
 
-// Click to cycle through effects
+// Click anywhere to START / PLAY the video + cycle modes
 function mousePressed() {
+  if (!videoReady) return;
+
+  // First click starts the video
+  if (!video.isPlaying()) {
+    video.loop();
+    console.log("Video started");
+  }
+
+  // Then cycle effects on every click
   mode = (mode + 1) % 3;
   
-  // Visual feedback
-  if (mode === 0) console.log("Mode: Tint");
-  if (mode === 1) console.log("Mode: Invert + Tint");
-  if (mode === 2) console.log("Mode: Posterize + Tint");
+  console.log("Mode:", mode === 0 ? "Tint" : mode === 1 ? "Invert + Tint" : "Posterize");
 }
