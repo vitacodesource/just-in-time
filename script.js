@@ -6,16 +6,25 @@ function setup() {
 function draw() {
   clear();
 
-  // strong, visible control
   let t = mouseX / width;
 
-  let c1 = color(0, 50, 120, 180);     // deep blue
-  let c2 = color(255, 140, 0, 180);    // strong orange
+  let c1 = color(10, 20, 50, 120);
+  let c2 = color(200, 120, 80, 120);
+  let c3 = color(255, 220, 150, 120);
 
-  let col = lerpColor(c1, c2, t);
+  let col;
+
+  if (t < 0.33) {
+    col = c1;
+  } else if (t < 0.66) {
+    col = c2;
+  } else {
+    col = c3;
+  }
 
   fill(col);
 
-  // slightly bigger + more visible
-  ellipse(mouseX, mouseY, 220);
+  let size = t < 0.33 ? 120 : t < 0.66 ? 180 : 240;
+
+  ellipse(mouseX, mouseY, size);
 }
