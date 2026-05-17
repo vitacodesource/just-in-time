@@ -3,42 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <title>Just In Time</title>
-
   <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script>
-
   <style>
     body {
       margin: 0;
       overflow: hidden;
+      background: black;
     }
-
-    video {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      object-fit: cover;
-      z-index: 0;
-    }
-
     canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 10;
-      pointer-events: none;
+      display: block;
     }
   </style>
 </head>
-
 <body>
-
-    <video autoplay loop controls playsinline>
-    <source src="JustInTime_FINAL_SMALL.mp4" type="video/mp4">
-  </video>
-
   <script src="script.js"></script>
-
 </body>
 </html>
