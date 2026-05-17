@@ -7,39 +7,39 @@
   <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script>
 
   <style>
-    body {
-      margin: 0;
-      overflow: hidden;
-    }
-
+    body { margin: 0; overflow: hidden; }
     video {
       position: fixed;
-      top: 0;
-      left: 0;
       width: 100vw;
       height: 100vh;
       object-fit: cover;
       z-index: 0;
     }
-
     canvas {
       position: fixed;
-      top: 0;
-      left: 0;
       z-index: 10;
-      pointer-events: none;
     }
   </style>
 </head>
 
 <body>
 
-  <!-- THIS MUST EXIST -->
   <video autoplay loop muted playsinline>
     <source src="JustInTime_FINAL_SMALL.mp4" type="video/mp4">
   </video>
 
-  <script src="script.js"></script>
+  <script>
+    function setup() {
+      createCanvas(windowWidth, windowHeight);
+    }
+
+    function draw() {
+      clear();
+
+      fill(255, 0, 0, 120);
+      ellipse(mouseX, mouseY, 200);
+    }
+  </script>
 
 </body>
 </html>
