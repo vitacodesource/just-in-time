@@ -8,11 +8,12 @@ function draw() {
 
   let t = mouseX / width;
 
-  let c1 = color(20, 30, 60, 120);
-  let c2 = color(255, 180, 100, 120);
-
-  let col = lerpColor(c1, c2, t);
+  let col = lerpColor(
+    color(20, 30, 60, 120),
+    color(255, 180, 100, 120),
+    t
+  );
 
   fill(col);
-  ellipse(mouseX, mouseY, 180);
+  ellipse(mouseX, mouseY, 160);
 }
