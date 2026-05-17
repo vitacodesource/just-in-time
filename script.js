@@ -13,7 +13,12 @@ function setup() {
 function draw() {
   clear();
 
+  let t = map(mouseX, 0, width, 0, 1);
+
+  let warm = lerpColor(color(255, 80, 0, 80), color(255, 220, 180, 80), t);
+
   noStroke();
-  fill(255, 180, 80, 120);
-  ellipse(mouseX, mouseY, 30);
+  fill(warm);
+
+  ellipse(mouseX, mouseY, 120);
 }
