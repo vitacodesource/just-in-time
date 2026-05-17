@@ -10,3 +10,11 @@ video {
   object-fit: cover;
   display: block;
 }
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  pointer-events: none;
+}
