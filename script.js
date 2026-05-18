@@ -21,10 +21,11 @@ function draw() {
     tint(r, g, b);
     image(video, 0, 0, width, height);
 
+    // stardust when mouse is up
     if (mouseY < height/2) {
       for (let i = 0; i < 6; i++) {
-        fill(255, 245, 220, random(100, 200));
-        circle(random(width), random(height * 0.65), random(2, 4));
+        fill(255, 240, 200, random(80, 180));
+        circle(random(width), random(height*0.6), random(1,4));
       }
     }
   } 
