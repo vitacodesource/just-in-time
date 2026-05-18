@@ -25,7 +25,7 @@ function draw() {
     if (mouseY < height/2) {
       for (let i = 0; i < 6; i++) {
         fill(255, 240, 200, random(80, 175));
-        circle(random(width), random(height*0.6), random(1.5,6));
+        circle(random(width), random(height*0.6), random(1.5,12));
       }
     }
   } 
