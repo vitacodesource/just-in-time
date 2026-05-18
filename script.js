@@ -6,7 +6,7 @@ function setup() {
   video = createVideo("JustInTime_FINAL_SMALL.mp4");
   video.hide();
   video.volume(1);
-  cursor('🦇');
+  cursor(HAND);
 }
 
 function draw() {
@@ -25,7 +25,7 @@ function draw() {
     if (mouseY < height/2) {
       for (let i = 0; i < 6; i++) {
         fill(255, 240, 200, random(80, 175));
-        circle(random(width), random(height*0.6), random(75,175));
+        circle(random(width), random(height*0.6), random(1.5,3.5));
       }
     }
   } 
